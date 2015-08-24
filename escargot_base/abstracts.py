@@ -3,10 +3,10 @@ __all__ = ('AbstractRamp')
 
 class AbstractRamp:
     
-    def __init__(self, lengthen, shorten, len_accu):
+    def __init__(self, lengthen_args, shorten_args, len_accu):
         self.len_accu = len_accu
-        self.lengthen_args = lengthen
-        self.shorten_args = shorten
+        self.lengthen_args = lengthen_args
+        self.shorten_args = shorten_args
 
     def get_len(self):
         """Return the length of the ramp."""
