@@ -7,14 +7,9 @@ __all__ = ('Ramp')
 class Ramp(BasicRamp):
     """A basic ramp running on a pcDuino."""
 
-    def __init__(self, *args, **kwargs):
-        BasicRamp.__init__(self, *args, **kwargs)
-
-    def __len__(self):
-        pass
-
     def delay(self, d):
-        pass
+        pd.delay(d)
 
     def pulse(self, output):
-        pass
+        pd.digitalWrite(output, pd.HIGH)
+        pd.digitalWrite(output, pd.LOW)
