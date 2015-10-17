@@ -1,21 +1,22 @@
-from . import AbstractRamp 
+import escargot as es
 
-__all__ = ('AbstractAngleValveRamp')
+__all__ = ('AbstractRamp')
 
 
-class AbstractAngleValveRamp(AbstractRamp):
+class AbstractRamp(es.AbstractRamp):
     """An abstract ramp with an angle sensor and two solenoid valves.""" 
     
-    def __init__(self, len_args, short_args, *args, **kwargs):
-        AbstractRamp.__init__(self, *args, **kwargs)
+    def __init__(self, len_args, short_args, max_angle, accuracy, max_len):
+        super().__init__(accuracy, max_len)
 
         self.len_args = len_args
         self.short_args = short_args
+        self.max_angle = max_angle
 
     def __len__(self):
         angle = self.get_angle()
 
-        return angle/360.0 * self.max_len
+        return angle/self.max_angle * self.max_len
 
     def delay(self, delay):
         raise NotImplementedError
